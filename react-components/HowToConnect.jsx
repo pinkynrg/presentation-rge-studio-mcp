@@ -110,7 +110,7 @@ export default function HowToConnect() {
   // auto-only (no clicking): exponential decay, accelerating into
   // "Any assistant", short pause, then loop from the start.
   useEffect(() => {
-    const delay = idx >= LAST ? 1500 : Math.max(30, Math.round(2400 * Math.pow(0.7, idx)))
+    const delay = idx >= LAST ? 10000 : Math.max(30, Math.round(2400 * Math.pow(0.7, idx)))
     const t = setTimeout(() => setIdx((i) => (i >= LAST ? 0 : i + 1)), delay)
     return () => clearTimeout(t)
   }, [idx])
@@ -200,9 +200,9 @@ export default function HowToConnect() {
         </div>
         <div style={{ flex: '0 0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           {tabKey === 'any'
-            ? <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '7px', width: '160px' }}>
+            ? <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '14px' }}>
                 {Object.values(LOGOS).map((l, i) => (
-                  <img key={i} src={l} style={{ width: '22px', height: '22px', objectFit: 'contain' }} />
+                  <img key={i} src={l} style={{ width: '46px', height: '46px', objectFit: 'contain' }} />
                 ))}
               </div>
             : <img src={logo} style={{ height: '240px', width: 'auto', maxWidth: '240px', objectFit: 'contain' }} />}
