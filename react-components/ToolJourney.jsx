@@ -52,10 +52,10 @@ export default function ToolJourney() {
   }, [])
 
   return (
-    <div style={{ marginTop: '1rem' }}>
+    <div style={{ marginTop: '1.5rem', width: '100%' }}>
       <style>{`.slidev-layout div.tool-raw { color: #6f5aa0 !important; }`}</style>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '0.7rem', alignItems: 'start' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '0.9rem', alignItems: 'start', width: '100%' }}>
         {STAGES.map((stage, si) => {
           const lit = si <= step
           const active = si === step
@@ -67,32 +67,32 @@ export default function ToolJourney() {
                 background: lit ? '#f1ebff' : '#f5f5f7',
                 color: lit ? '#7747ff' : '#aaa',
                 border: `1px solid ${lit ? (active ? '#7747ff' : '#d9cffa') : '#e8e8ea'}`,
-                boxShadow: active ? '0 3px 10px rgba(119,71,255,0.18)' : 'none',
-                borderRadius: '10px',
-                padding: '0.35rem 0.2rem',
-                marginBottom: '0.5rem',
+                boxShadow: active ? '0 4px 14px rgba(119,71,255,0.2)' : 'none',
+                borderRadius: '12px',
+                padding: '0.4rem 0.3rem',
+                marginBottom: '0.6rem',
                 transform: active ? 'scale(1.06)' : 'scale(1)',
                 transition: 'all 0.4s',
               }}>
-                <div style={{ fontSize: '1.2rem', lineHeight: 1.2 }}>{stage.icon}</div>
-                <div style={{ fontSize: '0.65rem', fontWeight: 800 }}>{stage.name}</div>
+                <div style={{ fontSize: '1.3rem', lineHeight: 1.2 }}>{stage.icon}</div>
+                <div style={{ fontSize: '0.72rem', fontWeight: 800 }}>{stage.name}</div>
               </div>
 
               {/* tool chips */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
                 {stage.tools.map((tool, ti) => (
                   <div key={tool.raw} style={{
                     background: lit ? '#f8f6ff' : '#f5f5f5',
-                    borderLeft: `2px solid ${lit ? '#7747ff' : '#ddd'}`,
-                    padding: '0.2rem 0.35rem',
-                    lineHeight: 1.2,
+                    borderLeft: `3px solid ${lit ? '#7747ff' : '#ddd'}`,
+                    padding: '0.3rem 0.45rem',
+                    lineHeight: 1.25,
                     opacity: lit ? 1 : 0.5,
                     transform: lit ? 'scale(1)' : 'scale(0.95)',
                     transition: 'all 0.3s',
                     transitionDelay: active ? `${ti * 70}ms` : '0ms',
                   }}>
-                    <div style={{ fontSize: '0.52rem', color: lit ? '#1a1a1a' : '#aaa' }}>{tool.label}</div>
-                    <div className="tool-raw" style={{ fontSize: '0.42rem', fontFamily: 'monospace' }}>{tool.raw}</div>
+                    <div style={{ fontSize: '0.58rem', fontWeight: 600, color: lit ? '#1a1a1a' : '#aaa' }}>{tool.label}</div>
+                    <div className="tool-raw" style={{ fontSize: '0.45rem', fontFamily: 'monospace' }}>{tool.raw}</div>
                   </div>
                 ))}
               </div>
