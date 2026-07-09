@@ -34,7 +34,7 @@ fonts:
 4. **The 18 tools** · what the AI can do
 5. **Live demo** · on claude.ai
 6. **How to connect** · any assistant, one URL
-7. **What we learned**
+7. **The challenges we faced**
 8. **Monitoring** · KPIs in Grafana
 9. **What's next**
 10. **Q & A**
@@ -112,26 +112,26 @@ class: text-center
 
 ---
 
-# What we learned
+# The challenges that we faced
 
 <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem;">
 
 <div style="background: linear-gradient(135deg, #f8f6ff 0%, #ffffff 100%); border: 1px solid #e8deff; border-radius: 12px; padding: 1.2rem; box-shadow: 0 4px 12px rgba(119,71,255,0.15);">
   <div style="font-size: 2rem; text-align: center; margin-bottom: 0.5rem;">📌</div>
   <div style="text-align: center; font-weight: 700; font-size: 0.9rem;">One tool, read me first</div>
-  <p style="text-align: center; font-size: 0.75rem; color: #666 !important; margin-top: 0.5rem;">the server's own description is optional, not every client reads it. So the rules live in a mandatory tool call</p>
+  <p style="text-align: center; font-size: 0.75rem; color: #666 !important; margin-top: 0.5rem;">an MCP server's description is optional, and there's no guarantee an agent reads it or follows it. So we put the instructions inside a tool the agent must call first</p>
 </div>
 
 <div style="background: linear-gradient(135deg, #f8f6ff 0%, #ffffff 100%); border: 1px solid #e8deff; border-radius: 12px; padding: 1.2rem; box-shadow: 0 4px 12px rgba(119,71,255,0.15);">
   <div style="font-size: 2rem; text-align: center; margin-bottom: 0.5rem;">🔗</div>
   <div style="text-align: center; font-weight: 700; font-size: 0.9rem;">1 endpoint ≠ 1 tool</div>
-  <p style="text-align: center; font-size: 0.75rem; color: #666 !important; margin-top: 0.5rem;">mapping each REST endpoint straight to a tool isn't always right. Sometimes you tighten the request, and trim the response, to just what the model needs</p>
+  <p style="text-align: center; font-size: 0.75rem; color: #666 !important; margin-top: 0.5rem;">our endpoints return a lot of info meant for the screen, but an agent doesn't need most of it. We trimmed the response to just what the model actually needs</p>
 </div>
 
 <div style="background: linear-gradient(135deg, #f8f6ff 0%, #ffffff 100%); border: 1px solid #e8deff; border-radius: 12px; padding: 1.2rem; box-shadow: 0 4px 12px rgba(119,71,255,0.15);">
   <div style="font-size: 2rem; text-align: center; margin-bottom: 0.5rem;">📸</div>
   <div style="text-align: center; font-weight: 700; font-size: 0.9rem;">Preview was harder than it looked</div>
-  <p style="text-align: center; font-size: 0.75rem; color: #666 !important; margin-top: 0.5rem;">inline HTML needs a domain whitelist for images, but users pull images from anywhere. We couldn't allow the whole web. Screenshots won</p>
+  <p style="text-align: center; font-size: 0.75rem; color: #666 !important; margin-top: 0.5rem;">we show a snapshot image instead of live HTML. Just as good to look at, but safer: no worrying about where external resources (scripts, images, css) are hosted</p>
 </div>
 
 </div>

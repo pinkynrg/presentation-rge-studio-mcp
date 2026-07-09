@@ -105,19 +105,15 @@ const LAST = TABS.length - 1
 
 export default function HowToConnect() {
   const [idx, setIdx] = useState(0)
-  const [paused, setPaused] = useState(false)
   const tabRefs = useRef([])
 
-  // blitz through every tab and land on "Any assistant" — we handle them all.
-  // stops once it reaches the last tab, or the moment the user clicks a tab.
+  // auto-only (no clicking): exponential decay, accelerating into
+  // "Any assistant", short pause, then loop from the start.
   useEffect(() => {
-    if (paused) return
-    // true exponential decay: 4s, 3s, 2.25s, 1.7s ... accelerating into
-    // "Any assistant", pause on it, then loop from the start.
-    const delay = idx >= LAST ? 2200 : Math.max(40, Math.round(4000 * Math.pow(0.75, idx)))
+    const delay = idx >= LAST ? 1500 : Math.max(30, Math.round(2400 * Math.pow(0.7, idx)))
     const t = setTimeout(() => setIdx((i) => (i >= LAST ? 0 : i + 1)), delay)
     return () => clearTimeout(t)
-  }, [idx, paused])
+  }, [idx])
 
   // keep the active tab scrolled into view (the strip whooshes along)
   useEffect(() => {
@@ -150,28 +146,28 @@ export default function HowToConnect() {
 
       <div style={{ margin: '0.5rem 0 0.9rem' }} />
 
-      <div style={{ maxWidth: '500px' }}>
+      <div>
       {/* tabs — horizontally scrollable */}
       <div className="htc-strip" style={{
-        display: 'flex', gap: '0.2rem', borderBottom: '2px solid #e8deff',
+        display: 'flex', gap: '0.2rem', borderBottom: '1px solid #e8deff',
         overflowX: 'auto', scrollbarWidth: 'none',
       }}>
         {TABS.map((t, i) => {
           const on = i === idx
           return (
             <div key={t.key} ref={(el) => (tabRefs.current[i] = el)}
-              onClick={() => { setIdx(i); setPaused(true) }} style={{
-                cursor: 'pointer', padding: '0.4rem 0.8rem', flex: '0 0 auto',
+              style={{
+                padding: '0.4rem 0.8rem', flex: '0 0 auto',
                 fontSize: '0.72rem', fontWeight: 700, whiteSpace: 'nowrap',
                 borderBottom: `3px solid ${on ? '#7747ff' : 'transparent'}`,
-                marginBottom: '-2px',
+                marginBottom: '0',
                 display: 'flex', alignItems: 'center', gap: '0.35rem',
                 transition: 'all 0.2s',
               }}>
-              <span style={{
+              {i !== LAST && <span style={{
                 width: 7, height: 7, borderRadius: '50%', display: 'inline-block',
                 background: i < 3 ? '#ff4444' : '#ccc',
-              }} />
+              }} />}
               <span className={on ? 'htc-p' : 'htc-mut'}>{t.label}</span>
               {t.rec && <span style={{
                 background: '#22bb33', borderRadius: '8px',
@@ -184,11 +180,11 @@ export default function HowToConnect() {
 
       {/* selected tool panel — numbered steps + provider logo on the right */}
       <div style={{
-        background: 'rgba(255,255,255,0.75)', border: '1px solid #e8deff', borderTop: 'none',
-        borderRadius: '0 0 10px 10px', padding: '0.9rem 1.1rem', height: '180px', boxSizing: 'border-box',
-        display: 'flex', alignItems: 'center', gap: '1rem', overflow: 'hidden',
+        background: 'rgba(255,255,255,0.75)', border: '1px solid #e8deff',
+        borderRadius: '10px', padding: '0.9rem 1.1rem', height: '280px', boxSizing: 'border-box', marginTop: '0.7rem',
+        display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '3rem', overflow: 'hidden',
       }}>
-        <div style={{ flex: 1 }}>
+        <div style={{ flex: '0 0 300px' }}>
           {items.map((it, i) => (
             <div key={i} style={{ display: 'flex', gap: '0.6rem', alignItems: it.cmd ? 'center' : 'baseline', margin: '0.4rem 0' }}>
               <span style={{
@@ -209,12 +205,24 @@ export default function HowToConnect() {
                   <img key={i} src={l} style={{ width: '22px', height: '22px', objectFit: 'contain' }} />
                 ))}
               </div>
-            : <img src={logo} style={{ height: '150px', width: 'auto', maxWidth: '170px', objectFit: 'contain' }} />}
+            : <img src={logo} style={{ height: '240px', width: 'auto', maxWidth: '240px', objectFit: 'contain' }} />}
         </div>
       </div>
 
+      {/* legend */}
+      <div style={{ display: 'flex', gap: '1.5rem', fontSize: '0.64rem', marginTop: '0.7rem', alignItems: 'center', flexWrap: 'wrap' }}>
+        <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+          <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#ff4444', display: 'inline-block' }} />
+          tested client
+        </span>
+        <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+          <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#ccc', display: 'inline-block' }} />
+          not tested yet, usable if the client supports MCP connectors
+        </span>
+      </div>
+
       {/* detailed docs */}
-      <div style={{ fontSize: '0.72rem', marginTop: '0.8rem', wordBreak: 'break-all' }}>
+      <div style={{ fontSize: '0.72rem', marginTop: '0.6rem', wordBreak: 'break-all' }}>
         <span style={{ fontWeight: 700 }}>More details:</span> <a href={DOCS} target="_blank" className="htc-p">{DOCS}</a>
       </div>
       </div>
