@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import editorImg from '../assets/editor.png'
 
 const apiPulseKf = `
 @keyframes apiPulse {
@@ -94,7 +95,7 @@ export default function SameApiNewCaller() {
                 <span key={c} style={{ width: 7, height: 7, borderRadius: '50%', background: c, display: 'inline-block' }} />
               ))}
             </div>
-            <img src="/assets/editor.png" style={{
+            <img src={editorImg} style={{
               width: '100%', flex: 1, minHeight: 0, objectFit: 'cover', objectPosition: 'top', display: 'block',
             }} />
           </div>

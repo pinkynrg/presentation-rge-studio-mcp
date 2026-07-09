@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import rgeIcon from '../assets/rge-icon.svg'
+import beefreeIcon from '../assets/beefree-icon.png'
 
 // Node centers + half-extents (percent of container). Arrows, boxes and the
 // travelling dot are ALL derived from these. hw/hh are the box half-width/height
@@ -109,7 +111,7 @@ export default function ArchFlow() {
       </>)}
 
       {box(N.mcp, step === 1 || step === 5, '22%', <>
-        <img src="/assets/rge-icon.svg" style={{ height: 22, width: 22, display: 'block', margin: '0 auto 0.5rem' }} />
+        <img src={rgeIcon} style={{ height: 22, width: 22, display: 'block', margin: '0 auto 0.5rem' }} />
         {title('RGE Studio MCP')}
         {sub('the front door')}
         <div style={{ fontSize: '0.55rem', color: '#666', marginTop: '0.2rem' }}>
@@ -118,12 +120,12 @@ export default function ArchFlow() {
       </>)}
 
       {box(N.backend, step === 2, '26%', <>
-        <img src="/assets/rge-icon.svg" style={{ height: 22, width: 22, display: 'block', margin: '0 auto 0.5rem' }} />
+        <img src={rgeIcon} style={{ height: 22, width: 22, display: 'block', margin: '0 auto 0.5rem' }} />
         {title('RGE Studio backend')}
       </>)}
 
       {box(N.editor, step === 6, '26%', <>
-        <img src="/assets/beefree-icon.png" style={{ height: 20, width: 'auto', display: 'block', margin: '0 auto 0.5rem' }} />
+        <img src={beefreeIcon} style={{ height: 20, width: 'auto', display: 'block', margin: '0 auto 0.5rem' }} />
         {title('SDK MCP')}
       </>)}
     </div>
