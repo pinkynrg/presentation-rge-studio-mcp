@@ -33,10 +33,11 @@ fonts:
 3. **Same API, new caller** · a human clicks, now the AI calls
 4. **The 18 tools** · what the AI can do
 5. **Live demo** · on claude.ai
-6. **What we learned**
-7. **Monitoring** · KPIs in Grafana
-8. **What's next**
-9. **Q & A**
+6. **How to connect** · any assistant, one URL
+7. **What we learned**
+8. **Monitoring** · KPIs in Grafana
+9. **What's next**
+10. **Q & A**
 
 </div>
 
@@ -102,6 +103,12 @@ class: text-center
 <!-- Write a feature announcement email in Spotify's style. Tone: friendly, energetic, slightly playful. Structure: colorful gradient hero with feature name large → two-sentence explanation of what's new → three-column icon triptych showing how it works step by step → animated GIF of the feature in the app → user testimonial pull quote → CTA: 'Try It Now.' Spotify green on dark background. -->
 
 <!-- Write a launch email for a new iPhone in Apple's style. Tone: quiet confidence, zero hype. Structure: full-bleed product hero on white → five-word headline → two-sentence intro → alternating split-screen sections for three key features, each with a close-up shot and one paragraph → specs comparison table against previous model → primary CTA: 'Order Now'. Pure white background, SF Pro typography implied, single grey accent. -->
+
+---
+
+# How to connect
+
+<React is="HowToConnect" />
 
 ---
 

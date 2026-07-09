@@ -5,6 +5,7 @@ import ToolJourney from './ToolJourney.jsx'
 import ThreeMoves from './ThreeMoves.jsx'
 import ArchFlow from './ArchFlow.jsx'
 import Roadmap from './Roadmap.jsx'
+import HowToConnect from './HowToConnect.jsx'
 
 export default {
   AssistantCycler,
@@ -14,4 +15,5 @@ export default {
   ThreeMoves,
   ArchFlow,
   Roadmap,
+  HowToConnect,
 }
