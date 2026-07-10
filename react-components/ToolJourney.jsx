@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useInView } from './useInView.js'
 
 // All 18 tools, grouped by what they're actually for. Labels are human-readable;
 // the real tool names live in the code — here we care about what they DO.
@@ -20,7 +21,7 @@ const STAGES = [
     ],
   },
   {
-    icon: '✍️', name: 'Create the email', bg: '#eefaf1', bd: '#cdeed6', bdDark: '#6cc389', tools: [
+    icon: '✍️', name: 'Drafting', bg: '#eefaf1', bd: '#cdeed6', bdDark: '#6cc389', tools: [
       { label: 'Start a draft', raw: 'open_email_editor' },
       { label: 'Reuse a design', raw: 'get_inspired' },
       { label: 'SDK MCP → code mode', raw: 'edit_email' },
@@ -45,14 +46,17 @@ const STAGES = [
 
 // Stages light up left to right; each stage pops its tool chips in.
 export default function ToolJourney() {
+  const [ref, inView] = useInView()
   const [step, setStep] = useState(0)
+  useEffect(() => { if (!inView) setStep(0) }, [inView])
   useEffect(() => {
+    if (!inView) return
     const t = setInterval(() => setStep((s) => (s + 1) % (STAGES.length + 2)), 1500)
     return () => clearInterval(t)
-  }, [])
+  }, [inView])
 
   return (
-    <div style={{ marginTop: '1.5rem', width: '100%' }}>
+    <div ref={ref} style={{ marginTop: '1.5rem', width: '100%' }}>
       <style>{`.slidev-layout div.tool-raw { color: #6f5aa0 !important; }`}</style>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '0.9rem', alignItems: 'start', width: '100%' }}>

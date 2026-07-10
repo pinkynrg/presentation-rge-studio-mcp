@@ -47,5 +47,6 @@ export const LAST = PROVIDERS.length - 1
 // then loop. Used by both the title cycler and the How-to-connect tabs.
 export function cycleDelay(idx) {
   if (idx >= LAST) return 10000
-  return Math.max(30, Math.round(2400 * Math.pow(0.7, idx)))
+  // whole scroll to the last tab finishes in under 5s, then a long hold
+  return Math.max(28, Math.round(1700 * Math.pow(0.62, idx)))
 }

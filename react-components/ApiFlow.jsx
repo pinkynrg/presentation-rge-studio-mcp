@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { useInView } from './useInView.js'
 import loginImg from '../assets/app-login.png'
 import spinnerImg from '../assets/app-spinner.png'
 import contentImg from '../assets/app-content.png'
@@ -192,18 +193,21 @@ function frontCards(login) {
 export default function ApiFlow({ withAgent = false }) {
   const twoRow = withAgent
   const SEQ = twoRow ? TWIN : F
+  const [ref, inView] = useInView()
   const [i, setI] = useState(0)
+  useEffect(() => { if (!inView) setI(0) }, [inView])
   useEffect(() => {
+    if (!inView) return
     const t = setInterval(() => setI((v) => (v + 1) % SEQ.length), twoRow ? 4400 : 2200)
     return () => clearInterval(t)
-  }, [SEQ.length, twoRow])
+  }, [SEQ.length, twoRow, inView])
 
   // ── Single slide: one row, frontend ↔ backend ──
   if (!twoRow) {
     const st = F[i]
     const c = frontCards(i <= 4)
     return (
-      <div style={{ marginTop: '2.6rem' }}>
+      <div ref={ref} style={{ marginTop: '2.6rem' }}>
         {STYLE_TAG}
         <div style={{ display: 'grid', gridTemplateColumns: GRID_COLS, gap: '0', alignItems: 'stretch', height: 'auto' }}>
           <Frontend img={st.img} active twoRow={false} />
@@ -220,7 +224,7 @@ export default function ApiFlow({ withAgent = false }) {
   const st = TWIN[i]
   const SQ = 178
   return (
-    <div style={{ marginTop: '0.6rem' }}>
+    <div ref={ref} style={{ marginTop: '0.6rem' }}>
       {STYLE_TAG}
 
       {/* Row 1 — human app → backend (one hop, 2 beats) */}
@@ -234,7 +238,7 @@ export default function ApiFlow({ withAgent = false }) {
       <div style={{ display: 'grid', gridTemplateColumns: `${SQ}px 1fr ${SQ}px 1fr ${SQ}px`, gap: '0', alignItems: 'center', marginTop: '1.1rem' }}>
         <Agent active />
         <Lane chip={st.aA} outCard={TOOL_OUT} backCard={TOOL_BACK} dur="3.6s" />
-        <Backend active hit={st.mcpHit} square title="MCP" />
+        <Backend active hit={st.mcpHit} square title="MCP server" />
         <Lane chip={st.aB} outCard={REST_OUT} backCard={REST_BACK} dur="3.6s" />
         <Backend active hit={st.abHit} ok="✓ your folders" square title="Backend" />
       </div>

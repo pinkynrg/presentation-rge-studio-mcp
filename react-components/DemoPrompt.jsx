@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react'
+import { useInView } from './useInView.js'
 
 const PROMPT = `Hi Claude, I'm doing a live showcase of an MCP server we built last cycle: RGE STUDIO. Sell it by using it, like a salesperson showing it off to a prospect. Open with a warm greeting and keep a polite, personable tone throughout. Narrate as you go.
 
 Use it end to end to reveal its strengths, exercise every RGE Studio tool at least once, and finish with a quick recap of what each one proved.
+
+When you create emails, keep the two starting points strictly separate. Build one email using only the brand styles, with no inspiration from any existing email. Build the other using only an existing email as inspiration, with no brand styles at all. Never mix the two sources.
 
 Keep the discovery genuine, but when in doubt, default to the organization BEE Content Design, Inc., and the "RGE Studio - MCP" workspace.
 
@@ -20,18 +23,20 @@ const ClaudeMark = ({ size }) => (
 export default function DemoPrompt() {
   const open = () => window.open(`https://claude.ai/new?q=${encodeURIComponent(PROMPT)}`, '_blank', 'noopener')
 
-  // typewriter — the prompt writes itself so you can read along
+  // typewriter — starts when the slide comes into view, resets when it leaves
+  const [ref, inView] = useInView()
   const [n, setN] = useState(0)
+  useEffect(() => { if (!inView) setN(0) }, [inView])
   useEffect(() => {
-    if (n >= PROMPT.length) return
+    if (!inView || n >= PROMPT.length) return
     const t = setTimeout(() => setN((v) => v + 1), 18)
     return () => clearTimeout(t)
-  }, [n])
+  }, [n, inView])
   const shown = PROMPT.slice(0, n)
   const done = n >= PROMPT.length
 
   return (
-    <div style={{ width: '620px', maxWidth: '88%', margin: '0 auto' }}>
+    <div ref={ref} style={{ width: '620px', maxWidth: '88%', margin: '0 auto' }}>
       <style>{`
         .slidev-layout .dpc-txt { color: #eceae4 !important; }
         .slidev-layout .dpc-mut { color: #918d83 !important; }
@@ -65,7 +70,7 @@ export default function DemoPrompt() {
         border: '0.5px solid rgba(255,255,255,0.08)', boxShadow: '0 0.35rem 1.3rem rgba(0,0,0,0.28)',
         padding: '0.8rem 0.9rem 0.6rem', textAlign: 'left',
       }}>
-        <div className="dpc-txt" style={{ fontSize: '0.72rem', lineHeight: 1.6, whiteSpace: 'pre-wrap', height: '17.5rem', overflowY: 'auto' }}>
+        <div className="dpc-txt" style={{ fontSize: '0.72rem', lineHeight: 1.6, whiteSpace: 'pre-wrap', height: '20.5rem', overflowY: 'auto' }}>
           {shown}
           {!done && <span className="dpc-cursor dpc-txt" style={{ fontWeight: 300 }}>▍</span>}
         </div>

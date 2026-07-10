@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { PROVIDERS, LAST, cycleDelay } from './providers'
+import { useInView } from './useInView.js'
 
 const URL = 'https://mcp.reallygoodemails.com/mcp'
 const DOCS = 'https://growens.atlassian.net/wiki/spaces/BEEPro/pages/7104102464/RGE+Studio+-+MCP+Server+beta#How-to-connect'
@@ -19,13 +20,16 @@ export default function HowToConnect() {
   const [idx, setIdx] = useState(0)
   const tabRefs = useRef([])
   const stripRef = useRef(null)
+  const [ref, inView] = useInView()
 
   // auto-only (no clicking): shared accelerating cycle, long hold on the last
-  // one, then loop. Same timing as the title cycler (see providers.js).
+  // one, then loop. Starts when the slide comes into view, resets on leave.
+  useEffect(() => { if (!inView) setIdx(0) }, [inView])
   useEffect(() => {
+    if (!inView) return
     const t = setTimeout(() => setIdx((i) => (i >= LAST ? 0 : i + 1)), cycleDelay(idx))
     return () => clearTimeout(t)
-  }, [idx])
+  }, [idx, inView])
 
   // slide the strip so the active tab is centered — scroll ONLY the strip
   // (not the page), clamped so first stays flush-left and last flush-right.
@@ -45,7 +49,7 @@ export default function HowToConnect() {
   const logo = p.logo
 
   return (
-    <div style={{ marginTop: '2rem' }}>
+    <div ref={ref} style={{ marginTop: '2rem' }}>
       <style>{`
         .slidev-layout .htc-p { color: #7747ff !important; }
         .slidev-layout .htc-mut { color: #c2c2c2 !important; }

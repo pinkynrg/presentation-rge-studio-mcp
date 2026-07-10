@@ -33,19 +33,20 @@ const GROUPS = [
     { raw: 'get_email', tgt: 'backend', label: 'One email' },
     { raw: 'get_brand_styles', tgt: 'backend', label: 'Brand styles' },
   ] },
-  { name: 'Create', bg: '#eefaf1', bd: '#cdeed6', tools: [
-    { raw: 'open_email_editor', tgt: 'backend_content', label: 'Start a draft' },
+  { name: 'Drafting', bg: '#eefaf1', bd: '#cdeed6', tools: [
+    { raw: 'open_email_editor', id: 'open_blank', tgt: 'content_sdk', label: 'Blank draft' },
+    { raw: 'open_email_editor', id: 'open_existing', tgt: 'backend_content_sdk', label: 'Draft from an email' },
     { raw: 'get_inspired', tgt: 'backend_content_sdk', label: 'Reuse a design' },
     { raw: 'edit_email', tgt: 'content_sdk', label: 'Edit with code' },
   ] },
   { name: 'Check', bg: '#fff6e8', bd: '#f2e2bf', tools: [
-    { raw: 'preview_email', tgt: 'content', label: 'Preview' },
+    { raw: 'preview_email', tgt: 'content_renderer', label: 'Preview' },
     { raw: 'preview_saved_email', tgt: 'backend_content_renderer', label: 'Preview saved' },
     { raw: 'screenshot_email', tgt: 'content_renderer', label: 'Self-check shot' },
   ] },
   { name: 'Save', bg: '#fdeef4', bd: '#f6d3e2', tools: [
-    { raw: 'create_email', tgt: 'content_backend', label: 'Save new' },
-    { raw: 'update_saved_email', tgt: 'content_backend', label: 'Update saved' },
+    { raw: 'create_email', tgt: 'content_renderer_backend', label: 'Save new' },
+    { raw: 'update_saved_email', tgt: 'content_renderer_backend', label: 'Update saved' },
     { raw: 'update_email_metadata', tgt: 'backend', label: 'Edit metadata' },
     { raw: 'export_email_html', tgt: 'backend', label: 'Export HTML' },
   ] },
@@ -55,16 +56,17 @@ const GROUPS = [
 // itself (in sequence), and the SDK MCP + renderer sit behind the content
 // service. So multi-hop tools bounce back through the MCP between calls.
 // out to the target(s), then the response travels back to the assistant
+// The content service is a gateway, never a dead end: calls that pass through
+// it land on the SDK MCP (editor / codemode / inspiration) or the renderer
+// (html + screenshots). Saves then continue to the backend.
 const ROUTES = {
   mcp: ['assistant', 'mcp', 'assistant'],
   backend: ['assistant', 'mcp', 'backend', 'mcp', 'assistant'],
-  content: ['assistant', 'mcp', 'content', 'mcp', 'assistant'],
   content_sdk: ['assistant', 'mcp', 'content', 'sdk', 'content', 'mcp', 'assistant'],
   content_renderer: ['assistant', 'mcp', 'content', 'renderer', 'content', 'mcp', 'assistant'],
-  content_backend: ['assistant', 'mcp', 'content', 'mcp', 'backend', 'mcp', 'assistant'],
-  backend_content: ['assistant', 'mcp', 'backend', 'mcp', 'content', 'mcp', 'assistant'],
   backend_content_sdk: ['assistant', 'mcp', 'backend', 'mcp', 'content', 'sdk', 'content', 'mcp', 'assistant'],
   backend_content_renderer: ['assistant', 'mcp', 'backend', 'mcp', 'content', 'renderer', 'content', 'mcp', 'assistant'],
+  content_renderer_backend: ['assistant', 'mcp', 'content', 'renderer', 'content', 'mcp', 'backend', 'mcp', 'assistant'],
 }
 
 // trim the center→center segment to each box's border
@@ -86,14 +88,14 @@ export default function ArchFlow() {
 
   const TRAVEL = 280, DWELL = 160
 
-  const fire = (raw, tgt) => {
+  const fire = (it) => {
     timers.current.forEach(clearTimeout)
     timers.current = []
-    setTool(raw)
-    setTarget(tgt)
+    setTool(it.id || it.raw)
+    setTarget(it.tgt)
     setWp(0)
     setArrivedWp(0)
-    const path = ROUTES[tgt]
+    const path = ROUTES[it.tgt]
     let t = 0
     for (let i = 1; i < path.length; i++) {
       t += DWELL
@@ -152,9 +154,9 @@ export default function ArchFlow() {
   const sub = (t) => <div style={{ fontSize: '0.46rem', color: '#666', lineHeight: 1.1, marginTop: '0.1rem' }}>{t}</div>
 
   const chip = (t, g) => {
-    const on = tool === t.raw
+    const on = tool === (t.id || t.raw)
     return (
-      <div key={t.raw} className={on ? 'af-tool af-on' : 'af-tool'} onClick={() => fire(t.raw, t.tgt)} style={{
+      <div key={t.id || t.raw} className={on ? 'af-tool af-on' : 'af-tool'} onClick={() => fire(t)} style={{
         boxSizing: 'border-box', padding: '0.2rem 0.35rem', borderRadius: '6px', lineHeight: 1.15,
         border: `1px solid ${on ? '#7747ff' : g.bd}`,
         background: on ? '#7747ff' : g.bg,

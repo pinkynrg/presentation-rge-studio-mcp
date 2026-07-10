@@ -13,11 +13,15 @@ export default function TwoProducts({ clicks = 0 }) {
     display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly',
     alignItems: 'center', textAlign: 'center',
   }
-  const badge = { background: '#f0fff4', border: '1px solid #22bb33', borderRadius: '8px', padding: '0.3rem 0.9rem', fontSize: '0.85rem' }
+  const badge = { background: '#f0fff4', border: '1px solid #22bb33', borderRadius: '999px', padding: '0.3rem 0.95rem', fontSize: '0.82rem', fontWeight: 700, letterSpacing: '0.01em' }
 
   return (
     <div style={{ position: 'relative', height: '34vh', marginTop: '1.5rem' }}>
-      <style>{`.slidev-layout .tp-title { color: #000 !important; } .slidev-layout .tp-desc { color: #666 !important; }`}</style>
+      <style>{`
+        .slidev-layout .tp-title { color: #000 !important; }
+        .slidev-layout .tp-desc { color: #666 !important; }
+        .slidev-layout .tp-ship { color: #1a7f37 !important; }
+      `}</style>
 
       {/* SDK */}
       <div key={`sdk-${phase}`} className={phase === 'charge' ? 'sdk-out' : undefined} style={{
@@ -26,7 +30,7 @@ export default function TwoProducts({ clicks = 0 }) {
         <img src={beefreeIcon} style={{ height: '72px', width: 'auto' }} />
         <h3 className="tp-title" style={{ fontSize: '1.5rem', margin: 0 }}>SDK</h3>
         <p className="tp-desc" style={{ fontSize: '0.95rem', margin: 0 }}>the drag-and-drop editor our customers embed</p>
-        <code style={badge}>MCP shipped</code>
+        <span className="tp-ship" style={badge}>✓ MCP shipped</span>
       </div>
 
       {/* RGE Studio */}
@@ -36,7 +40,7 @@ export default function TwoProducts({ clicks = 0 }) {
         <img src={rgeIcon} style={{ height: '84px', width: '84px' }} />
         <h3 className="tp-title" style={{ fontSize: '1.5rem', margin: 0 }}>RGE Studio</h3>
         <p className="tp-desc" style={{ fontSize: '0.95rem', margin: 0 }}>the app where teams manage all their email designs</p>
-        <code style={badge}>MCP shipped today!</code>
+        <span className="tp-ship" style={badge}>✓ MCP ships today!</span>
       </div>
     </div>
   )
