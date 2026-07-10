@@ -9,6 +9,7 @@ import HowToConnect from './HowToConnect.jsx'
 import TwoProducts from './TwoProducts.jsx'
 import RestForKids from './RestForKids.jsx'
 import AppLoginFlow from './AppLoginFlow.jsx'
+import DemoPrompt from './DemoPrompt.jsx'
 
 export default {
   AssistantCycler,
@@ -22,4 +23,5 @@ export default {
   TwoProducts,
   RestForKids,
   AppLoginFlow,
+  DemoPrompt,
 }

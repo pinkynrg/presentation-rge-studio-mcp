@@ -109,6 +109,11 @@ blockquote * {
   flex-direction: column;
 }
 
+/* Demo prompt slide — full dark Claude backdrop */
+.slidev-layout.demo-dark {
+  background: #1b1a18 !important;
+}
+
 /* Inline code (not fenced blocks) — branded purple chip */
 .slidev-layout :not(pre) > code {
   color: #7747ff !important;

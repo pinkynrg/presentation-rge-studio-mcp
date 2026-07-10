@@ -16,6 +16,7 @@ fonts:
   sans: 'Roboto'
   serif: 'Roboto Slab'
   mono: 'Roboto Mono'
+  weights: '300,400,700'
 ---
 
 # RGE Studio MCP
@@ -151,6 +152,13 @@ class: text-center
 ---
 
 # Demo time
+
+---
+layout: center
+class: text-center demo-dark no-watermark
+---
+
+<React is="DemoPrompt" />
 
 <!-- Write a travel inspiration email in Airbnb's style. Tone: warm, human, wanderlust-driven. Structure: destination hero with white body background → friendly headline about belonging anywhere → two-sentence intro → three-column destination cards each with a photo, location name, and starting price → host spotlight split-screen with photo and short quote → CTA: 'Start Exploring.' Warm coral and white palette. -->
 
