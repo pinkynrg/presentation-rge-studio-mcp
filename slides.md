@@ -3,7 +3,7 @@ theme: seriph
 title: RGE Studio MCP
 info: |
   ## RGE Studio MCP
-  RGE Studio, inside any AI assistant — how we turned our product into
+  RGE Studio, inside any AI assistant. How we turned our product into
   buttons an LLM can press.
 class: text-center
 drawings:
@@ -142,7 +142,7 @@ class: text-center
 
 # What's next
 
-<p style="font-size: 0.9rem; color: #666 !important; margin-top: -0.3rem;">Beta is real. Everything after is a wishlist — ideas we're chasing, not promises.</p>
+<p style="font-size: 0.9rem; color: #666 !important; margin-top: -0.3rem;">Beta is real. Everything after is a wishlist, ideas we're chasing, not promises.</p>
 
 <React is="Roadmap" />
 
