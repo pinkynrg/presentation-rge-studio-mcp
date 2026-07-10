@@ -7,6 +7,8 @@ import ArchFlow from './ArchFlow.jsx'
 import Roadmap from './Roadmap.jsx'
 import HowToConnect from './HowToConnect.jsx'
 import TwoProducts from './TwoProducts.jsx'
+import RestForKids from './RestForKids.jsx'
+import AppLoginFlow from './AppLoginFlow.jsx'
 
 export default {
   AssistantCycler,
@@ -18,4 +20,6 @@ export default {
   Roadmap,
   HowToConnect,
   TwoProducts,
+  RestForKids,
+  AppLoginFlow,
 }

@@ -29,15 +29,16 @@ fonts:
 <div style="font-size: 1rem; margin-top: 1rem;">
 
 1. **Two products, two MCPs** · what we built
-2. **Same API, new caller** · a human clicks, now the AI calls
-3. **The 18 tools** · what the AI can do
-4. **How it's wired** · one door, whole app behind it
-5. **How to connect** · any assistant, one URL
-6. **The challenges we faced** · what was hard, and our fixes
-7. **Monitoring** · KPIs in Grafana
-8. **What's next** · the roadmap
-9. **Live demo** · on claude.ai
-10. **Q & A** · your turn
+2. **What's an API?** · every screen is an API call
+3. **Same API, new caller** · a human clicks, now the AI calls
+4. **The 18 tools** · what the AI can do
+5. **How it's wired** · one door, whole app behind it
+6. **How to connect** · any assistant, one URL
+7. **The challenges we faced** · what was hard, and our fixes
+8. **Monitoring** · KPIs in Grafana
+9. **What's next** · the roadmap
+10. **Live demo** · on claude.ai
+11. **Q & A** · your turn
 
 </div>
 
@@ -53,9 +54,19 @@ The SDK has had one for a while. Today, **RGE Studio gets its own.**
 
 ---
 
+# What's an API?
+
+It's how an app asks a server for things. You ask, it answers.
+
+<React is="AppLoginFlow" />
+
+---
+class: no-watermark
+---
+
 # Same API, new caller
 
-An API is a **waiter** 🤵. You don't walk into the kitchen. You ask, it brings.
+The app already talks to this backend. Now the **AI calls the exact same thing**, at the same time.
 
 <React is="SameApiNewCaller" />
 

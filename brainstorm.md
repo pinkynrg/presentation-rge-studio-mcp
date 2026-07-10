@@ -54,7 +54,7 @@ a section. (A colleague may again do a separate vision intro; if so, ours starts
   little breathing room for the live demo.
 - **Demo**: **live from Claude, no fallback.** Bold — rehearse it hard.
 - **Status**: **launching soon as Beta** → frame "what's next" as a real rollout.
-- **Auth**: **mention only, never explain** — "sign in with your reallygoodemail.com account"
+- **Auth**: **mention only, never explain** — "sign in with your reallygoodemails.com account"
   and move on. OAuth2/OIDC internals lose the room.
 - **Competitor framing** (Stensul/Knak/Stripo): **drop it.** Short, fun, internal talk about
   *our* thing — logos cost setup time and steal focus. (Reconsider only if you want a 1-line
@@ -112,7 +112,7 @@ users to our AI and started bringing RGE Studio into theirs.
 multi-user remote server. **18 tools**, not the 5 the old README lists.
 
 **It's also a full OAuth2 / OIDC server** (zitadel/oidc): sign in with your
-reallygoodemail.com (RGE Studio) account, opaque encrypted access tokens, Postgres-backed token store, RFC 9728
+reallygoodemails.com (RGE Studio) account, opaque encrypted access tokens, Postgres-backed token store, RFC 9728
 `WWW-Authenticate` discovery so MCP clients auto-find the auth endpoints, automatic token
 refresh. This is a big deal and a genuine differentiator.
 
@@ -202,7 +202,7 @@ beepro-backend routes, the same ones the RGE Studio web app calls):
 8. **Architecture (kept dead simple)** — one animated picture, no jargon: Claude → **RGE Studio
    MCP** → two arrows out: one to **our own backend** (does most of the work), one tiny arrow to
    **the SDK's codemode** (only for the actual editing). Auth = one spoken line: "you sign in
-   with your reallygoodemail.com account." Don't say OAuth/OIDC/Postgres out loud — it's on the
+   with your reallygoodemails.com account." Don't say OAuth/OIDC/Postgres out loud — it's on the
    diagram at most, not narrated.
 9. **Live demo** — build an email end-to-end from Claude, **live, no fallback**. Go full-screen
    in Claude (optionally frame it `VirtualDesktop`-style). This is the proof; rehearse it hard.
@@ -326,5 +326,5 @@ rebuild.** This project uses **no animation library** — animations are hand-ro
   fallback**. **Status**: Beta soon.
 - **Tone**: explain like to fun, distractible kids — simple, analogy-first, motion carries it.
 - **Auth**: mention only, never explain. **Competitor framing**: dropped.
-- **Product naming**: RGE Studio / reallygoodemail.com in all user-facing copy; `beefree_*`,
+- **Product naming**: RGE Studio / reallygoodemails.com in all user-facing copy; `beefree_*`,
   `beefree-mcp`, `beepro` stay only as code identifiers.
