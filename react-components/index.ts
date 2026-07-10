@@ -10,6 +10,7 @@ import TwoProducts from './TwoProducts.jsx'
 import RestForKids from './RestForKids.jsx'
 import AppLoginFlow from './AppLoginFlow.jsx'
 import DemoPrompt from './DemoPrompt.jsx'
+import TeamWall from './TeamWall.jsx'
 
 export default {
   AssistantCycler,
@@ -24,4 +25,5 @@ export default {
   RestForKids,
   AppLoginFlow,
   DemoPrompt,
+  TeamWall,
 }

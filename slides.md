@@ -82,7 +82,7 @@ Grouped by what they're for: read the rules, find your stuff, create, check, sav
 
 # How it's wired
 
-One door. All of beefree behind it.
+One door. All of RGE Studio behind it.
 
 <React is="ArchFlow" />
 
@@ -176,3 +176,7 @@ class: text-center
 # Thanks for listening!
 
 <React is="AssistantCycler" />
+
+<p style="font-size: 0.8rem; color: #666 !important; margin-top: 1.6rem;">The team that made it happen</p>
+
+<React is="TeamWall" />

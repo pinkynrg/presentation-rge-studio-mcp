@@ -4,7 +4,7 @@ const PROMPT = `Hi Claude, I'm doing a live showcase of an MCP server we built l
 
 Use it end to end to reveal its strengths, exercise every RGE Studio tool at least once, and finish with a quick recap of what each one proved.
 
-Keep the discovery genuine, but when in doubt, default to the organization BEE Content Design, Inc., and the RGE Studio workspace.
+Keep the discovery genuine, but when in doubt, default to the organization BEE Content Design, Inc., and the "RGE Studio - MCP" workspace.
 
 Keep answers detailed but not too verbose. I'm screen-sharing, so favor tight, readable output.
 
