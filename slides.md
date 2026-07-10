@@ -32,12 +32,12 @@ fonts:
 2. **How it's wired** · one door, whole app behind it
 3. **Same API, new caller** · a human clicks, now the AI calls
 4. **The 18 tools** · what the AI can do
-5. **Live demo** · on claude.ai
-6. **How to connect** · any assistant, one URL
-7. **The challenges we faced**
-8. **Monitoring** · KPIs in Grafana
-9. **What's next**
-10. **Q & A**
+5. **How to connect** · any assistant, one URL
+6. **The challenges we faced** · what was hard, and our fixes
+7. **Monitoring** · KPIs in Grafana
+8. **What's next** · the roadmap
+9. **Live demo** · on claude.ai
+10. **Q & A** · your turn
 
 </div>
 
@@ -74,21 +74,6 @@ An API is a **waiter** 🤵. You don't walk into the kitchen. You ask, it brings
 Grouped by what they're for: read the rules, find your stuff, create, check, save.
 
 <React is="ToolJourney" />
-
----
-layout: center
-class: text-center
----
-
-# Demo
-
-<!-- Write a travel inspiration email in Airbnb's style. Tone: warm, human, wanderlust-driven. Structure: destination hero with white body background → friendly headline about belonging anywhere → two-sentence intro → three-column destination cards each with a photo, location name, and starting price → host spotlight split-screen with photo and short quote → CTA: 'Start Exploring.' Warm coral and white palette. -->
-
-<!-- Write a premiere email for a new dark thriller series in Netflix's style. Tone: cinematic, mysterious. Structure: full-bleed key art hero with title treatment overlay → release date in red → two-line series logline → three-column episode preview strip with stills and one-line teasers → cast spotlight split-screen → CTA: 'Watch Now.' Black background, Netflix red accents only. -->
-
-<!-- Write a feature announcement email in Spotify's style. Tone: friendly, energetic, slightly playful. Structure: colorful gradient hero with feature name large → two-sentence explanation of what's new → three-column icon triptych showing how it works step by step → animated GIF of the feature in the app → user testimonial pull quote → CTA: 'Try It Now.' Spotify green on dark background. -->
-
-<!-- Write a launch email for a new iPhone in Apple's style. Tone: quiet confidence, zero hype. Structure: full-bleed product hero on white → five-word headline → two-sentence intro → alternating split-screen sections for three key features, each with a close-up shot and one paragraph → specs comparison table against previous model → primary CTA: 'Order Now'. Pure white background, SF Pro typography implied, single grey accent. -->
 
 ---
 
@@ -145,6 +130,21 @@ class: text-center
 <p style="font-size: 0.9rem; color: #666 !important; margin-top: -0.3rem;">Beta is real. Everything after is a wishlist, ideas we're chasing, not promises.</p>
 
 <React is="Roadmap" />
+
+---
+layout: center
+class: text-center
+---
+
+# Demo
+
+<!-- Write a travel inspiration email in Airbnb's style. Tone: warm, human, wanderlust-driven. Structure: destination hero with white body background → friendly headline about belonging anywhere → two-sentence intro → three-column destination cards each with a photo, location name, and starting price → host spotlight split-screen with photo and short quote → CTA: 'Start Exploring.' Warm coral and white palette. -->
+
+<!-- Write a premiere email for a new dark thriller series in Netflix's style. Tone: cinematic, mysterious. Structure: full-bleed key art hero with title treatment overlay → release date in red → two-line series logline → three-column episode preview strip with stills and one-line teasers → cast spotlight split-screen → CTA: 'Watch Now.' Black background, Netflix red accents only. -->
+
+<!-- Write a feature announcement email in Spotify's style. Tone: friendly, energetic, slightly playful. Structure: colorful gradient hero with feature name large → two-sentence explanation of what's new → three-column icon triptych showing how it works step by step → animated GIF of the feature in the app → user testimonial pull quote → CTA: 'Try It Now.' Spotify green on dark background. -->
+
+<!-- Write a launch email for a new iPhone in Apple's style. Tone: quiet confidence, zero hype. Structure: full-bleed product hero on white → five-word headline → two-sentence intro → alternating split-screen sections for three key features, each with a close-up shot and one paragraph → specs comparison table against previous model → primary CTA: 'Order Now'. Pure white background, SF Pro typography implied, single grey accent. -->
 
 ---
 layout: center
