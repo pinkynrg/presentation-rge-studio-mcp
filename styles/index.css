@@ -192,3 +192,40 @@ blockquote * {
 .slidev-code {
   background: #f5f5f5 !important;
 }
+
+/* ============================================
+   RGE STUDIO CARD PULSE (two-products slide)
+   ============================================ */
+@keyframes rgePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+.rge-pulse {
+  animation: rgePulse 1.6s ease-in-out infinite !important;
+}
+
+/* RGE charges the SDK card: 6 escalating jabs, then glides to center */
+@keyframes rgeCharge {
+  0% { transform: translateX(0); }
+  4% { transform: translateX(-64px); }  10% { transform: translateX(0); }
+  16% { transform: translateX(-66px); } 22% { transform: translateX(0); }
+  28% { transform: translateX(-68px); } 34% { transform: translateX(0); }
+  40% { transform: translateX(-70px); } 46% { transform: translateX(0); }
+  52% { transform: translateX(-72px); } 58% { transform: translateX(0); }
+  65% { transform: translateX(-76px); } 72% { transform: translateX(0); }
+  100% { transform: translateX(-56%); }
+}
+.rge-charge { animation: rgeCharge 2.6s ease-in-out forwards !important; }
+
+/* SDK gets knocked left 6 times, then launches off the stage */
+@keyframes sdkKnockout {
+  0% { transform: translateX(0); opacity: 1; }
+  5% { transform: translateX(-10px); }  10% { transform: translateX(-3px); }
+  17% { transform: translateX(-24px); } 22% { transform: translateX(-12px); }
+  29% { transform: translateX(-40px); } 34% { transform: translateX(-22px); }
+  41% { transform: translateX(-60px); } 46% { transform: translateX(-36px); }
+  53% { transform: translateX(-86px); } 58% { transform: translateX(-56px); }
+  66% { transform: translateX(-124px); opacity: 1; } 72% { transform: translateX(-92px); }
+  100% { transform: translateX(-175%) rotate(-14deg); opacity: 0; }
+}
+.sdk-out { animation: sdkKnockout 2.6s ease-in-out forwards !important; }

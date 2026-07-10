@@ -43,27 +43,11 @@ fonts:
 
 ---
 
-# Two products, two MCPs
+# Two products. Finally, two MCPs.
 
-Two products, **each with its own MCP.** Today we open up the second one.
+The SDK has had one for a while. Today, **RGE Studio gets its own.**
 
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-top: 2rem; align-items: stretch;">
-
-<div style="border: 2px solid #e8deff; border-radius: 14px; padding: 1rem 1.2rem; background: rgba(255,255,255,0.8);">
-  <div style="text-align: center; height: 40px; display: flex; align-items: center; justify-content: center;"><img src="/assets/beefree-icon.png" style="height: 26px; width: auto;" /></div>
-  <h3 style="text-align: center; font-size: 1rem; margin-bottom: 0.3rem;">SDK</h3>
-  <p style="text-align: center; font-size: 0.8rem; color: #666 !important; margin-bottom: 0.8rem;">the drag-and-drop editor our customers embed</p>
-  <div style="text-align: center;"><code style="background: #f0fff4; border: 1px solid #22bb33; border-radius: 8px; padding: 0.25rem 0.7rem; font-size: 0.75rem;">shipped ✓</code></div>
-</div>
-
-<div style="border: 2px solid #7747ff; border-radius: 14px; padding: 1rem 1.2rem; background: rgba(255,255,255,0.9); box-shadow: 0 6px 20px rgba(119,71,255,0.2);">
-  <div style="text-align: center; height: 40px; display: flex; align-items: center; justify-content: center;"><img src="/assets/rge-icon.svg" style="height: 40px; width: 40px;" /></div>
-  <h3 style="text-align: center; font-size: 1rem; margin-bottom: 0.3rem;">RGE Studio</h3>
-  <p style="text-align: center; font-size: 0.8rem; color: #666 !important; margin-bottom: 0.8rem;">the app where teams manage all their email designs</p>
-  <div style="text-align: center;"><code style="background: #f8f6ff; border: 1px solid #7747ff; border-radius: 8px; padding: 0.25rem 0.7rem; font-size: 0.75rem; font-weight: 700;">today 🎉</code></div>
-</div>
-
-</div>
+<React is="TwoProducts" />
 
 ---
 

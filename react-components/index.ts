@@ -6,6 +6,7 @@ import ThreeMoves from './ThreeMoves.jsx'
 import ArchFlow from './ArchFlow.jsx'
 import Roadmap from './Roadmap.jsx'
 import HowToConnect from './HowToConnect.jsx'
+import TwoProducts from './TwoProducts.jsx'
 
 export default {
   AssistantCycler,
@@ -16,4 +17,5 @@ export default {
   ArchFlow,
   Roadmap,
   HowToConnect,
+  TwoProducts,
 }
