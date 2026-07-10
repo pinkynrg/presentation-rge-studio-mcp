@@ -153,8 +153,6 @@ class: text-center
 
 # Q & A
 
-<div style="font-size: 1.1rem; color: #666 !important; margin-top: 1rem;">ask away 🎤</div>
-
 ---
 layout: center
 class: text-center
