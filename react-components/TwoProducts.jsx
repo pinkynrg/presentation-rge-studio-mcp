@@ -1,16 +1,11 @@
-import { useState, useEffect } from 'react'
 import beefreeIcon from '../assets/beefree-icon.png'
 import rgeIcon from '../assets/rge-icon.svg'
 
-// Two cards side by side. After 10s, RGE Studio jabs the SDK card 6 times,
-// knocks it off the stage, and glides to center. It wants the spotlight.
-export default function TwoProducts() {
-  const [phase, setPhase] = useState('idle') // idle -> charge
-
-  useEffect(() => {
-    const t = setTimeout(() => setPhase('charge'), 10000)
-    return () => clearTimeout(t)
-  }, [])
+// Two cards side by side. On the first slide click, RGE Studio jabs the SDK card
+// 6 times, knocks it off the stage, and glides to center. It wants the spotlight.
+// `clicks` is Slidev's $clicks, passed from the slide.
+export default function TwoProducts({ clicks = 0 }) {
+  const phase = clicks >= 1 ? 'charge' : 'idle'
 
   const cardBase = {
     position: 'absolute', top: 0, height: '100%', width: '46%', boxSizing: 'border-box',
@@ -25,7 +20,7 @@ export default function TwoProducts() {
       <style>{`.slidev-layout .tp-title { color: #000 !important; } .slidev-layout .tp-desc { color: #666 !important; }`}</style>
 
       {/* SDK */}
-      <div className={phase === 'charge' ? 'sdk-out' : undefined} style={{
+      <div key={`sdk-${phase}`} className={phase === 'charge' ? 'sdk-out' : undefined} style={{
         ...cardBase, left: '1%', border: '2px solid #7747ff', background: 'rgba(255,255,255,0.8)', zIndex: 1,
       }}>
         <img src={beefreeIcon} style={{ height: '60px', width: 'auto' }} />
@@ -35,7 +30,7 @@ export default function TwoProducts() {
       </div>
 
       {/* RGE Studio */}
-      <div className={phase === 'idle' ? 'rge-pulse' : 'rge-charge'} style={{
+      <div key={`rge-${phase}`} className={phase === 'idle' ? 'rge-pulse' : 'rge-charge'} style={{
         ...cardBase, left: '53%', border: '2px solid #F04F49', background: 'rgba(255,255,255,0.95)', zIndex: 2,
       }}>
         <img src={rgeIcon} style={{ height: '84px', width: '84px' }} />

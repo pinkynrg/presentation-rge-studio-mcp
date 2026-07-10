@@ -47,7 +47,9 @@ fonts:
 
 The SDK has had one for a while. Today, **RGE Studio gets its own.**
 
-<React is="TwoProducts" />
+<React is="TwoProducts" :clicks="$clicks" :key="$clicks" />
+
+<span v-click></span>
 
 ---
 
