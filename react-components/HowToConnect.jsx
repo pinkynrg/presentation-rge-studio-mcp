@@ -1,96 +1,10 @@
 import { useState, useEffect, useRef } from 'react'
-import claude from '../assets/logos/claude.svg'
-import chatgpt from '../assets/logos/chatgpt.svg'
-import n8n from '../assets/logos/n8n.svg'
-import gemini from '../assets/logos/gemini.svg'
-import copilot from '../assets/logos/copilot.svg'
-import cursor from '../assets/logos/cursor.svg'
-import perplexity from '../assets/logos/perplexity.svg'
-import mistral from '../assets/logos/mistral.svg'
-import grok from '../assets/logos/grok.svg'
-import llama from '../assets/logos/llama.svg'
-import huggingface from '../assets/logos/huggingface.svg'
-import zapier from '../assets/logos/zapier.svg'
-import make from '../assets/logos/make.svg'
-import windsurf from '../assets/logos/windsurf.svg'
-import replit from '../assets/logos/replit.svg'
-import deepseek from '../assets/logos/deepseek.svg'
-import qwen from '../assets/logos/qwen.svg'
-import stackblitz from '../assets/logos/stackblitz.svg'
-import langchain from '../assets/logos/langchain.svg'
-import vercel from '../assets/logos/vercel.svg'
-import raycast from '../assets/logos/raycast.svg'
-import warp from '../assets/logos/warp.svg'
-import cline from '../assets/logos/cline.svg'
-import openrouter from '../assets/logos/openrouter.svg'
-
-const LOGOS = {
-  claude, chatgpt, n8n, gemini, copilot, cursor, perplexity, mistral, grok, llama,
-  huggingface, zapier, make, windsurf, replit, deepseek, qwen, stackblitz, langchain,
-  vercel, raycast, warp, cline, openrouter,
-}
+import { PROVIDERS, LAST, cycleDelay } from './providers'
 
 const URL = 'https://mcp.reallygoodemails.com/mcp'
 const DOCS = 'https://growens.atlassian.net/wiki/spaces/BEEPro/pages/7104102464/RGE+Studio+-+MCP+Server+beta#How-to-connect'
 
-const TABS = [
-  { key: 'claude', label: 'Claude', rec: true },
-  { key: 'chatgpt', label: 'ChatGPT' },
-  { key: 'n8n', label: 'N8N' },
-  // ...and everything else (blitzed through to make the point)
-  { key: 'gemini', label: 'Gemini' },
-  { key: 'copilot', label: 'Copilot' },
-  { key: 'cursor', label: 'Cursor' },
-  { key: 'perplexity', label: 'Perplexity' },
-  { key: 'mistral', label: 'Mistral' },
-  { key: 'grok', label: 'Grok' },
-  { key: 'llama', label: 'Llama' },
-  { key: 'huggingface', label: 'Hugging Face' },
-  { key: 'zapier', label: 'Zapier' },
-  { key: 'make', label: 'Make' },
-  { key: 'windsurf', label: 'Windsurf' },
-  { key: 'replit', label: 'Replit' },
-  { key: 'deepseek', label: 'DeepSeek' },
-  { key: 'qwen', label: 'Qwen' },
-  { key: 'stackblitz', label: 'StackBlitz' },
-  { key: 'langchain', label: 'LangChain' },
-  { key: 'vercel', label: 'Vercel' },
-  { key: 'raycast', label: 'Raycast' },
-  { key: 'warp', label: 'Warp' },
-  { key: 'cline', label: 'Cline' },
-  { key: 'openrouter', label: 'OpenRouter' },
-  { key: 'any', label: 'Any assistant' },
-]
-
-// only a few need bespoke steps; everything else uses the generic flow
-const CONTENT = {
-  claude: ['Settings → Connectors', 'Add custom connector', 'Paste the URL', 'Sign in'],
-  chatgpt: ['Paid plan', 'Enable Developer Mode', 'Create App', 'Auth: OAuth'],
-  n8n: ['Add MCP node', 'Transport: HTTP Streamable', 'Auth: MCP OAuth2', 'Dynamic Client Registration', 'Connect, sign in'],
-  // mock steps — just for the blitz effect; every row differs tab to tab
-  gemini: ['Open settings', 'Add extension', 'Drop the URL', 'Authorize'],
-  copilot: ['Copilot menu', 'New MCP server', 'Enter the URL', 'Log in'],
-  cursor: ['Cursor → MCP', 'Register server', 'URL goes here', 'Approve access'],
-  perplexity: ['Connectors tab', 'Create connector', 'Server address', 'OAuth login'],
-  mistral: ['Le Chat setup', 'Attach a tool', 'Point to URL', 'Confirm sign-in'],
-  grok: ['Grok settings', 'Hook up MCP', 'Paste endpoint', 'Allow access'],
-  llama: ['Wire your app', 'HTTP transport', 'Set the URL', 'Token exchange'],
-  huggingface: ['Toolkit config', 'Register MCP', 'Add endpoint', 'Grant access'],
-  zapier: ['New Zap', 'MCP action', 'Feed the URL', 'Connect account'],
-  make: ['Add a module', 'MCP client', 'URL in config', 'Link account'],
-  windsurf: ['Windsurf → MCP', 'Add a server', 'Server URL', 'Trust it'],
-  replit: ['Open Replit', 'Add integration', 'Paste endpoint', 'Authorize app'],
-  deepseek: ['DeepSeek settings', 'Enable tools', 'URL field', 'Sign in'],
-  qwen: ['Qwen console', 'New connector', 'Add address', 'Log on'],
-  stackblitz: ['Bolt.new', 'Wire up MCP', 'Drop endpoint', 'Approve'],
-  langchain: ['LangChain client', 'MCP adapter', 'Set server URL', 'Grant token'],
-  vercel: ['v0 settings', 'MCP tool spec', 'Point to server', 'Allow it'],
-  raycast: ['Raycast AI', 'Add MCP', 'Paste server', 'Connect'],
-  warp: ['Warp terminal', 'Agent config', 'Add the URL', 'Confirm'],
-  cline: ['Cline settings', 'MCP servers', 'Enter address', 'OAuth'],
-  openrouter: ['OpenRouter keys', 'Add MCP tool', 'Server address', 'Authorize'],
-  any: ['Paste the URL', 'Sign in (OAuth)', 'Create'],
-}
+const GRID_LOGOS = PROVIDERS.filter((p) => p.logo).map((p) => p.logo)
 
 const Cmd = ({ children }) => (
   <div style={{
@@ -101,17 +15,14 @@ const Cmd = ({ children }) => (
   }}>{children}</div>
 )
 
-const LAST = TABS.length - 1
-
 export default function HowToConnect() {
   const [idx, setIdx] = useState(0)
   const tabRefs = useRef([])
 
-  // auto-only (no clicking): exponential decay, accelerating into
-  // "Any assistant", short pause, then loop from the start.
+  // auto-only (no clicking): shared accelerating cycle, long hold on the last
+  // one, then loop. Same timing as the title cycler (see providers.js).
   useEffect(() => {
-    const delay = idx >= LAST ? 10000 : Math.max(30, Math.round(2400 * Math.pow(0.7, idx)))
-    const t = setTimeout(() => setIdx((i) => (i >= LAST ? 0 : i + 1)), delay)
+    const t = setTimeout(() => setIdx((i) => (i >= LAST ? 0 : i + 1)), cycleDelay(idx))
     return () => clearTimeout(t)
   }, [idx])
 
@@ -121,9 +32,9 @@ export default function HowToConnect() {
     if (el) el.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' })
   }, [idx])
 
-  const tabKey = TABS[idx].key
-  const items = CONTENT[tabKey] || CONTENT.any
-  const logo = LOGOS[tabKey]
+  const p = PROVIDERS[idx]
+  const items = p.steps
+  const logo = p.logo
 
   return (
     <div style={{ marginTop: '0.6rem' }}>
@@ -152,7 +63,7 @@ export default function HowToConnect() {
         display: 'flex', gap: '0.2rem', borderBottom: '1px solid #e8deff',
         overflowX: 'auto', scrollbarWidth: 'none',
       }}>
-        {TABS.map((t, i) => {
+        {PROVIDERS.map((t, i) => {
           const on = i === idx
           return (
             <div key={t.key} ref={(el) => (tabRefs.current[i] = el)}
@@ -199,13 +110,13 @@ export default function HowToConnect() {
           ))}
         </div>
         <div style={{ flex: '0 0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          {tabKey === 'any'
-            ? <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '14px' }}>
-                {Object.values(LOGOS).map((l, i) => (
+          {logo
+            ? <img src={logo} style={{ height: '240px', width: 'auto', maxWidth: '240px', objectFit: 'contain' }} />
+            : <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '14px' }}>
+                {GRID_LOGOS.map((l, i) => (
                   <img key={i} src={l} style={{ width: '46px', height: '46px', objectFit: 'contain' }} />
                 ))}
-              </div>
-            : <img src={logo} style={{ height: '240px', width: 'auto', maxWidth: '240px', objectFit: 'contain' }} />}
+              </div>}
         </div>
       </div>
 
