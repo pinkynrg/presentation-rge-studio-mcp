@@ -103,6 +103,22 @@ blockquote * {
   display: none !important;
 }
 
+/* Title stays top; content grid fills and vertically centers */
+.slidev-layout.challenges-center {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Inline code (not fenced blocks) — branded purple chip */
+.slidev-layout :not(pre) > code {
+  color: #7747ff !important;
+  background: #f1ebff;
+  border: 1px solid #d9cffa;
+  border-radius: 6px;
+  padding: 0.1em 0.4em;
+  font-size: 0.85em;
+}
+
 /* ============================================
    ORDERED LISTS (OL)
    Purple numbered circles

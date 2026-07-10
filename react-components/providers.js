@@ -9,21 +9,13 @@ import cursor from '../assets/logos/cursor.svg'
 import perplexity from '../assets/logos/perplexity.svg'
 import mistral from '../assets/logos/mistral.svg'
 import grok from '../assets/logos/grok.svg'
-import llama from '../assets/logos/llama.svg'
-import huggingface from '../assets/logos/huggingface.svg'
 import zapier from '../assets/logos/zapier.svg'
 import make from '../assets/logos/make.svg'
 import windsurf from '../assets/logos/windsurf.svg'
 import replit from '../assets/logos/replit.svg'
-import deepseek from '../assets/logos/deepseek.svg'
-import qwen from '../assets/logos/qwen.svg'
-import stackblitz from '../assets/logos/stackblitz.svg'
-import langchain from '../assets/logos/langchain.svg'
-import vercel from '../assets/logos/vercel.svg'
 import raycast from '../assets/logos/raycast.svg'
 import warp from '../assets/logos/warp.svg'
 import cline from '../assets/logos/cline.svg'
-import openrouter from '../assets/logos/openrouter.svg'
 
 export const PURPLE = '#7747ff'
 
@@ -39,22 +31,14 @@ export const PROVIDERS = [
   { key: 'perplexity', label: 'Perplexity', color: PURPLE, logo: perplexity, steps: ['Connectors tab', 'Create connector', 'Server address', 'OAuth login'] },
   { key: 'mistral', label: 'Mistral', color: PURPLE, logo: mistral, steps: ['Le Chat setup', 'Attach a tool', 'Point to URL', 'Confirm sign-in'] },
   { key: 'grok', label: 'Grok', color: PURPLE, logo: grok, steps: ['Grok settings', 'Hook up MCP', 'Paste endpoint', 'Allow access'] },
-  { key: 'llama', label: 'Llama', color: PURPLE, logo: llama, steps: ['Wire your app', 'HTTP transport', 'Set the URL', 'Token exchange'] },
-  { key: 'huggingface', label: 'Hugging Face', color: PURPLE, logo: huggingface, steps: ['Toolkit config', 'Register MCP', 'Add endpoint', 'Grant access'] },
   { key: 'zapier', label: 'Zapier', color: PURPLE, logo: zapier, steps: ['New Zap', 'MCP action', 'Feed the URL', 'Connect account'] },
   { key: 'make', label: 'Make', color: PURPLE, logo: make, steps: ['Add a module', 'MCP client', 'URL in config', 'Link account'] },
   { key: 'windsurf', label: 'Windsurf', color: PURPLE, logo: windsurf, steps: ['Windsurf → MCP', 'Add a server', 'Server URL', 'Trust it'] },
   { key: 'replit', label: 'Replit', color: PURPLE, logo: replit, steps: ['Open Replit', 'Add integration', 'Paste endpoint', 'Authorize app'] },
-  { key: 'deepseek', label: 'DeepSeek', color: PURPLE, logo: deepseek, steps: ['DeepSeek settings', 'Enable tools', 'URL field', 'Sign in'] },
-  { key: 'qwen', label: 'Qwen', color: PURPLE, logo: qwen, steps: ['Qwen console', 'New connector', 'Add address', 'Log on'] },
-  { key: 'stackblitz', label: 'StackBlitz', color: PURPLE, logo: stackblitz, steps: ['Bolt.new', 'Wire up MCP', 'Drop endpoint', 'Approve'] },
-  { key: 'langchain', label: 'LangChain', color: PURPLE, logo: langchain, steps: ['LangChain client', 'MCP adapter', 'Set server URL', 'Grant token'] },
-  { key: 'vercel', label: 'Vercel', color: PURPLE, logo: vercel, steps: ['v0 settings', 'MCP tool spec', 'Point to server', 'Allow it'] },
   { key: 'raycast', label: 'Raycast', color: PURPLE, logo: raycast, steps: ['Raycast AI', 'Add MCP', 'Paste server', 'Connect'] },
   { key: 'warp', label: 'Warp', color: PURPLE, logo: warp, steps: ['Warp terminal', 'Agent config', 'Add the URL', 'Confirm'] },
   { key: 'cline', label: 'Cline', color: PURPLE, logo: cline, steps: ['Cline settings', 'MCP servers', 'Enter address', 'OAuth'] },
-  { key: 'openrouter', label: 'OpenRouter', color: PURPLE, logo: openrouter, steps: ['OpenRouter keys', 'Add MCP tool', 'Server address', 'Authorize'] },
-  { key: 'any', label: 'any assistant', color: PURPLE, italic: true, logo: null, steps: ['Paste the URL', 'Sign in (OAuth)', 'Create'] },
+  { key: 'any', label: 'Any Assistant', color: PURPLE, italic: true, logo: null, steps: ['Paste the URL', 'Sign in (OAuth)', 'Create'] },
 ]
 
 export const LAST = PROVIDERS.length - 1

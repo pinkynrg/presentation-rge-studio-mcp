@@ -38,7 +38,6 @@ fonts:
 8. **Monitoring** · KPIs in Grafana
 9. **What's next** · the roadmap
 10. **Live demo** · on claude.ai
-11. **Q & A** · your turn
 
 </div>
 
@@ -90,13 +89,17 @@ One door. All of beefree behind it.
 
 # How to connect
 
+Nothing to install. No API key. Just a URL: `https://mcp.reallygoodemails.com/mcp`
+
 <React is="HowToConnect" />
 
+---
+class: challenges-center
 ---
 
 # The challenges that we faced
 
-<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem;">
+<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; flex: 1; align-content: center;">
 
 <div style="background: linear-gradient(135deg, #f8f6ff 0%, #ffffff 100%); border: 1px solid #e8deff; border-radius: 12px; padding: 1.2rem; box-shadow: 0 4px 12px rgba(119,71,255,0.15);">
   <div style="font-size: 2rem; text-align: center; margin-bottom: 0.5rem;">📌</div>
@@ -147,7 +150,7 @@ layout: center
 class: text-center
 ---
 
-# Demo
+# Demo time
 
 <!-- Write a travel inspiration email in Airbnb's style. Tone: warm, human, wanderlust-driven. Structure: destination hero with white body background → friendly headline about belonging anywhere → two-sentence intro → three-column destination cards each with a photo, location name, and starting price → host spotlight split-screen with photo and short quote → CTA: 'Start Exploring.' Warm coral and white palette. -->
 
@@ -156,13 +159,6 @@ class: text-center
 <!-- Write a feature announcement email in Spotify's style. Tone: friendly, energetic, slightly playful. Structure: colorful gradient hero with feature name large → two-sentence explanation of what's new → three-column icon triptych showing how it works step by step → animated GIF of the feature in the app → user testimonial pull quote → CTA: 'Try It Now.' Spotify green on dark background. -->
 
 <!-- Write a launch email for a new iPhone in Apple's style. Tone: quiet confidence, zero hype. Structure: full-bleed product hero on white → five-word headline → two-sentence intro → alternating split-screen sections for three key features, each with a close-up shot and one paragraph → specs comparison table against previous model → primary CTA: 'Order Now'. Pure white background, SF Pro typography implied, single grey accent. -->
-
----
-layout: center
-class: text-center
----
-
-# Q & A
 
 ---
 layout: center
