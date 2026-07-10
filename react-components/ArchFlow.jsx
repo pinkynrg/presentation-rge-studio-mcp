@@ -34,29 +34,37 @@ const GROUPS = [
     { raw: 'get_brand_styles', tgt: 'backend', label: 'Brand styles' },
   ] },
   { name: 'Create', bg: '#eefaf1', bd: '#cdeed6', tools: [
-    { raw: 'open_email_editor', tgt: 'sdk', label: 'Start a draft' },
-    { raw: 'get_inspired', tgt: 'sdk', label: 'Reuse a design' },
-    { raw: 'edit_email', tgt: 'sdk', label: 'Edit with code' },
+    { raw: 'open_email_editor', tgt: 'backend_content', label: 'Start a draft' },
+    { raw: 'get_inspired', tgt: 'backend_content_sdk', label: 'Reuse a design' },
+    { raw: 'edit_email', tgt: 'content_sdk', label: 'Edit with code' },
   ] },
   { name: 'Check', bg: '#fff6e8', bd: '#f2e2bf', tools: [
-    { raw: 'preview_email', tgt: 'renderer', label: 'Preview' },
-    { raw: 'preview_saved_email', tgt: 'renderer', label: 'Preview saved' },
-    { raw: 'screenshot_email', tgt: 'renderer', label: 'Self-check shot' },
+    { raw: 'preview_email', tgt: 'content', label: 'Preview' },
+    { raw: 'preview_saved_email', tgt: 'backend_content_renderer', label: 'Preview saved' },
+    { raw: 'screenshot_email', tgt: 'content_renderer', label: 'Self-check shot' },
   ] },
   { name: 'Save', bg: '#fdeef4', bd: '#f6d3e2', tools: [
-    { raw: 'create_email', tgt: 'backend', label: 'Save new' },
-    { raw: 'update_saved_email', tgt: 'backend', label: 'Update saved' },
+    { raw: 'create_email', tgt: 'content_backend', label: 'Save new' },
+    { raw: 'update_saved_email', tgt: 'content_backend', label: 'Update saved' },
     { raw: 'update_email_metadata', tgt: 'backend', label: 'Edit metadata' },
     { raw: 'export_email_html', tgt: 'backend', label: 'Export HTML' },
   ] },
 ]
 
-// out to the target, then the response travels back to the assistant
+// The MCP server orchestrates: it calls the backend and the content service
+// itself (in sequence), and the SDK MCP + renderer sit behind the content
+// service. So multi-hop tools bounce back through the MCP between calls.
+// out to the target(s), then the response travels back to the assistant
 const ROUTES = {
   mcp: ['assistant', 'mcp', 'assistant'],
   backend: ['assistant', 'mcp', 'backend', 'mcp', 'assistant'],
-  sdk: ['assistant', 'mcp', 'content', 'sdk', 'content', 'mcp', 'assistant'],
-  renderer: ['assistant', 'mcp', 'content', 'renderer', 'content', 'mcp', 'assistant'],
+  content: ['assistant', 'mcp', 'content', 'mcp', 'assistant'],
+  content_sdk: ['assistant', 'mcp', 'content', 'sdk', 'content', 'mcp', 'assistant'],
+  content_renderer: ['assistant', 'mcp', 'content', 'renderer', 'content', 'mcp', 'assistant'],
+  content_backend: ['assistant', 'mcp', 'content', 'mcp', 'backend', 'mcp', 'assistant'],
+  backend_content: ['assistant', 'mcp', 'backend', 'mcp', 'content', 'mcp', 'assistant'],
+  backend_content_sdk: ['assistant', 'mcp', 'backend', 'mcp', 'content', 'sdk', 'content', 'mcp', 'assistant'],
+  backend_content_renderer: ['assistant', 'mcp', 'backend', 'mcp', 'content', 'renderer', 'content', 'mcp', 'assistant'],
 }
 
 // trim the center→center segment to each box's border
@@ -76,7 +84,7 @@ export default function ArchFlow() {
   const [arrivedWp, setArrivedWp] = useState(0) // last waypoint index reached
   const timers = useRef([])
 
-  const TRAVEL = 700, DWELL = 400
+  const TRAVEL = 280, DWELL = 160
 
   const fire = (raw, tgt) => {
     timers.current.forEach(clearTimeout)
@@ -232,7 +240,7 @@ export default function ArchFlow() {
             width: 15, height: 15, borderRadius: '50%', background: '#7747ff',
             boxShadow: '0 0 10px 3px rgba(119,71,255,0.5)',
             transform: 'translate(-50%, -50%)',
-            transition: 'left 0.7s ease-in-out, top 0.7s ease-in-out',
+            transition: 'left 0.28s ease-in-out, top 0.28s ease-in-out',
             zIndex: 1,
           }} />
         )}
