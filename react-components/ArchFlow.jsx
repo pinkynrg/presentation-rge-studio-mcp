@@ -40,13 +40,13 @@ const GROUPS = [
     { raw: 'edit_email', tgt: 'content_sdk', label: 'Edit with code' },
   ] },
   { name: 'Check', bg: '#fff6e8', bd: '#f2e2bf', tools: [
-    { raw: 'preview_email', tgt: 'content_renderer', label: 'Preview' },
+    { raw: 'preview_email', tgt: 'content_sdk_renderer', label: 'Preview' },
     { raw: 'preview_saved_email', tgt: 'backend_content_renderer', label: 'Preview saved' },
-    { raw: 'screenshot_email', tgt: 'content_renderer', label: 'Self-check shot' },
+    { raw: 'screenshot_email', tgt: 'content_sdk_renderer', label: 'Self-check shot' },
   ] },
   { name: 'Save', bg: '#fdeef4', bd: '#f6d3e2', tools: [
-    { raw: 'create_email', tgt: 'content_renderer_backend', label: 'Save new' },
-    { raw: 'update_saved_email', tgt: 'content_renderer_backend', label: 'Update saved' },
+    { raw: 'create_email', tgt: 'content_sdk_backend', label: 'Save new' },
+    { raw: 'update_saved_email', tgt: 'content_sdk_backend', label: 'Update saved' },
     { raw: 'update_email_metadata', tgt: 'backend', label: 'Edit metadata' },
     { raw: 'export_email_html', tgt: 'backend', label: 'Export HTML' },
   ] },
@@ -63,10 +63,10 @@ const ROUTES = {
   mcp: ['assistant', 'mcp', 'assistant'],
   backend: ['assistant', 'mcp', 'backend', 'mcp', 'assistant'],
   content_sdk: ['assistant', 'mcp', 'content', 'sdk', 'content', 'mcp', 'assistant'],
-  content_renderer: ['assistant', 'mcp', 'content', 'renderer', 'content', 'mcp', 'assistant'],
   backend_content_sdk: ['assistant', 'mcp', 'backend', 'mcp', 'content', 'sdk', 'content', 'mcp', 'assistant'],
   backend_content_renderer: ['assistant', 'mcp', 'backend', 'mcp', 'content', 'renderer', 'content', 'mcp', 'assistant'],
-  content_renderer_backend: ['assistant', 'mcp', 'content', 'renderer', 'content', 'mcp', 'backend', 'mcp', 'assistant'],
+  content_sdk_renderer: ['assistant', 'mcp', 'content', 'sdk', 'content', 'mcp', 'content', 'renderer', 'content', 'mcp', 'assistant'],
+  content_sdk_backend: ['assistant', 'mcp', 'content', 'sdk', 'content', 'mcp', 'backend', 'mcp', 'assistant'],
 }
 
 // trim the center→center segment to each box's border
