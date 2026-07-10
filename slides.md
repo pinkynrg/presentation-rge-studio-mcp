@@ -29,9 +29,9 @@ fonts:
 <div style="font-size: 1rem; margin-top: 1rem;">
 
 1. **Two products, two MCPs** · what we built
-2. **How it's wired** · one door, whole app behind it
-3. **Same API, new caller** · a human clicks, now the AI calls
-4. **The 18 tools** · what the AI can do
+2. **Same API, new caller** · a human clicks, now the AI calls
+3. **The 18 tools** · what the AI can do
+4. **How it's wired** · one door, whole app behind it
 5. **How to connect** · any assistant, one URL
 6. **The challenges we faced** · what was hard, and our fixes
 7. **Monitoring** · KPIs in Grafana
@@ -53,14 +53,6 @@ The SDK has had one for a while. Today, **RGE Studio gets its own.**
 
 ---
 
-# How it's wired
-
-One door. All of RGE Studio behind it.
-
-<React is="ArchFlow" />
-
----
-
 # Same API, new caller
 
 An API is a **waiter** 🤵. You don't walk into the kitchen. You ask, it brings.
@@ -74,6 +66,14 @@ An API is a **waiter** 🤵. You don't walk into the kitchen. You ask, it brings
 Grouped by what they're for: read the rules, find your stuff, create, check, save.
 
 <React is="ToolJourney" />
+
+---
+
+# How it's wired
+
+One door. All of beefree behind it.
+
+<React is="ArchFlow" />
 
 ---
 

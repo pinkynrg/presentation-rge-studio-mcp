@@ -4,12 +4,12 @@ import { useState, useEffect } from 'react'
 // the real tool names live in the code — here we care about what they DO.
 const STAGES = [
   {
-    icon: '📖', name: 'Read the rules', tools: [
+    icon: '📖', name: 'Read the rules', bg: '#f3efff', bd: '#e0d5f7', bdDark: '#a98fe0', tools: [
       { label: 'Read the rulebook', raw: 'get_instructions' },
     ],
   },
   {
-    icon: '🔍', name: 'Find your stuff', tools: [
+    icon: '🔍', name: 'Find your stuff', bg: '#eef4ff', bd: '#d3e2fb', bdDark: '#7ba6e8', tools: [
       { label: 'Organizations', raw: 'list_customers' },
       { label: 'Workspaces', raw: 'list_brands' },
       { label: 'Folders', raw: 'list_projects' },
@@ -20,21 +20,21 @@ const STAGES = [
     ],
   },
   {
-    icon: '✍️', name: 'Create the email', tools: [
+    icon: '✍️', name: 'Create the email', bg: '#eefaf1', bd: '#cdeed6', bdDark: '#6cc389', tools: [
       { label: 'Start a draft', raw: 'open_email_editor' },
       { label: 'Reuse a design', raw: 'get_inspired' },
       { label: 'SDK MCP → code mode', raw: 'edit_email' },
     ],
   },
   {
-    icon: '👀', name: 'Check it', tools: [
+    icon: '👀', name: 'Check it', bg: '#fff6e8', bd: '#f2e2bf', bdDark: '#dcb85e', tools: [
       { label: 'Preview in chat', raw: 'preview_email' },
       { label: 'Preview a saved one', raw: 'preview_saved_email' },
       { label: 'Screenshot (AI self-check)', raw: 'screenshot_email' },
     ],
   },
   {
-    icon: '💾', name: 'Save & export', tools: [
+    icon: '💾', name: 'Save & export', bg: '#fdeef4', bd: '#f6d3e2', bdDark: '#e08bb4', tools: [
       { label: 'Save as new', raw: 'create_email' },
       { label: 'Update a saved one', raw: 'update_saved_email' },
       { label: 'Edit name / subject', raw: 'update_email_metadata' },
@@ -64,10 +64,10 @@ export default function ToolJourney() {
               {/* stage header */}
               <div style={{
                 textAlign: 'center',
-                background: lit ? '#f1ebff' : '#f5f5f7',
-                color: lit ? '#7747ff' : '#aaa',
-                border: `1px solid ${lit ? (active ? '#7747ff' : '#d9cffa') : '#e8e8ea'}`,
-                boxShadow: active ? '0 4px 14px rgba(119,71,255,0.2)' : 'none',
+                background: lit ? stage.bg : '#f5f5f7',
+                color: lit ? '#1a1a1a' : '#aaa',
+                border: `2px solid ${lit ? (active ? stage.bdDark : stage.bd) : '#e8e8ea'}`,
+                boxShadow: active ? '0 4px 14px rgba(0,0,0,0.1)' : 'none',
                 borderRadius: '12px',
                 padding: '0.4rem 0.3rem',
                 marginBottom: '0.6rem',
@@ -82,9 +82,9 @@ export default function ToolJourney() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
                 {stage.tools.map((tool, ti) => (
                   <div key={tool.raw} style={{
-                    background: lit ? '#f8f6ff' : '#f5f5f5',
-                    borderLeft: `3px solid ${lit ? '#7747ff' : '#ddd'}`,
-                    padding: '0.3rem 0.45rem',
+                    background: lit ? stage.bg : '#f5f5f5',
+                    border: `1px solid ${lit ? stage.bd : '#eee'}`,
+                    padding: '0.3rem 0.45rem', borderRadius: '6px',
                     lineHeight: 1.25,
                     opacity: lit ? 1 : 0.5,
                     transform: lit ? 'scale(1)' : 'scale(0.95)',

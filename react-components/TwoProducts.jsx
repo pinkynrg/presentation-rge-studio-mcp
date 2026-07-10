@@ -1,4 +1,4 @@
-import beefreeIcon from '../assets/beefree-icon.png'
+import beefreeIcon from '../assets/sdk-icon.svg'
 import rgeIcon from '../assets/rge-icon.svg'
 
 // Two cards side by side. On the first slide click, RGE Studio jabs the SDK card
@@ -23,7 +23,7 @@ export default function TwoProducts({ clicks = 0 }) {
       <div key={`sdk-${phase}`} className={phase === 'charge' ? 'sdk-out' : undefined} style={{
         ...cardBase, left: '1%', border: '2px solid #7747ff', background: 'rgba(255,255,255,0.8)', zIndex: 1,
       }}>
-        <img src={beefreeIcon} style={{ height: '60px', width: 'auto' }} />
+        <img src={beefreeIcon} style={{ height: '72px', width: 'auto' }} />
         <h3 className="tp-title" style={{ fontSize: '1.5rem', margin: 0 }}>SDK</h3>
         <p className="tp-desc" style={{ fontSize: '0.95rem', margin: 0 }}>the drag-and-drop editor our customers embed</p>
         <code style={badge}>MCP shipped</code>
