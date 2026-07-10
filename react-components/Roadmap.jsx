@@ -42,23 +42,23 @@ export default function Roadmap() {
 
   const itemStyle = {
     margin: '0.3rem 0',
-    whiteSpace: 'nowrap',
   }
 
   const columns = [
     {
       title: 'Public Beta',
-      date: 'coming soon',
+      date: 'available today',
       items: ['18 tools', 'Any assistant', 'All customers', 'One-click OAuth', 'Inline preview'],
       isBeta: true,
     },
     {
-      title: 'Next tools',
+      title: 'New ideas',
       date: 'up next',
       items: [
         'Real images, not placeholders',
         'Reuse saved synced rows',
-        'Smart check (before or after)',
+        'Smart check',
+        'Create more than one proposal at a time',
         'RGE best-practice review',
         'Exports: .oft, .emltpl, PDF, min. HTML',
         'Marketplace listings',
@@ -68,7 +68,7 @@ export default function Roadmap() {
       title: 'In-app chat',
       date: 'the big one',
       items: [
-        'Agent inside RGE Studio',
+        'Agent across the whole app, with its own MCP tools',
         'Navigates the app for you',
         'Knows your workspace context',
         'End-to-end tasks',
@@ -79,7 +79,7 @@ export default function Roadmap() {
   return (
     <div style={{
       display: 'grid',
-      gridTemplateColumns: '1fr 1fr 1fr',
+      gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
       gap: '2rem',
       marginTop: '2rem',
       fontSize: '0.9rem',
