@@ -124,9 +124,9 @@ class: text-center
 
 # Eyes on it: Grafana
 
-<p style="font-size: 0.95rem; color: #666 !important; margin-top: -0.3rem;">Every tool call emits a structured log. We watch usage, errors and latency live.</p>
+<p style="font-size: 0.95rem; color: #666 !important; margin-top: -0.3rem;">Every tool call emits a structured log, so any dashboard we want is a query away. A few panels live today.</p>
 
-<div style="border: 1px solid #ccc; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 28px rgba(0,0,0,0.2); margin-top: 1.2rem; max-width: 624px; margin-left: 0; margin-right: auto;">
+<div style="border: 1px solid #ccc; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 28px rgba(0,0,0,0.2); margin-top: 1.2rem; max-width: 690px; margin-left: 0; margin-right: auto;">
   <div style="background: #e8e8ea; padding: 0.35rem 0.6rem; display: flex; align-items: center; gap: 0.35rem;">
     <span style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f57; display: inline-block;"></span>
     <span style="width: 10px; height: 10px; border-radius: 50%; background: #febc2e; display: inline-block;"></span>
@@ -135,8 +135,6 @@ class: text-center
   </div>
   <img src="/assets/grafana.png" style="display: block; width: 100%;" />
 </div>
-
-<p style="font-size: 0.8rem; color: #999 !important; margin-top: 1rem;">A few panels today. The logs are all wired, so detailed dashboards are a query away.</p>
 
 ---
 
